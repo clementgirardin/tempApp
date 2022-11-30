@@ -1,5 +1,5 @@
 import { api } from 'boot/axios'
-import { afficherMessageErreur } from 'src/fonction/message-erreur'
+import { afficherMessageErreur } from 'src/fonctions/message-erreur'
 import { Loading, LocalStorage } from 'quasar'
 // State : données du magasin
 const state = {
