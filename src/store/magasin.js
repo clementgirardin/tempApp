@@ -4,15 +4,8 @@ import {afficherMessageErreur} from "src/fonctions/message-erreur";
 
 // State : données du magasin
 const state = {
-  user: [
-    {
-      nom: "Test",
-      prenom: "Test",
-      email: "test@tempapi.divtec.me",
-      password: "Admlocal1",
-      is_admin: "0"
-    }
-  ]
+  user: null,
+  token: null
 }
 
 /*
@@ -41,7 +34,27 @@ const actions = {
         )
         throw error
       })
-  }
+  },
+
+  connecterUtilisateur ({ commit, dispatch }, payload) {
+    var axios = require('axios');
+    var data = '{\r\n    "email": "test@tempapi.divtec.me",\r\n    "password": "Admlocal1"\r\n}';
+
+    var config = {
+      method: 'post',
+      url: 'https://tempapi.divtec.me/api/login',
+      headers: { },
+      data : data
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 }
 
 /*
