@@ -36,21 +36,6 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
-  enregistrerUtilisateur ({ commit, dispatch }, payload) {
-    Loading.show()
-    api.post('/register', payload)
-      .then(function (response) {
-        dispatch('setUser', response.data)
-      })
-      .catch(function (error) {
-        Loading.hide()
-        afficherMessageErreur(
-          'Création du compte impossible !',
-          Object.values(error.response.data)
-        )
-        throw error
-      })
-  },
   connecterUtilisateur ({ commit, dispatch }, payload) {
     Loading.show()
     api.post('/login', payload)
@@ -76,10 +61,8 @@ const actions = {
     // Sauvegarde les données de l'utilisateur dans le localStorage
     LocalStorage.set('user', state.user)
     LocalStorage.set('token', state.token)
-    // Récupération des tâches de l'utilisateur
-    dispatch('taches/getTachesApi', null, { root: true })
     // Redirige l'utilisateur vers la page des tâches
-    that.$router.push('/')
+    that.$router.push('/favoris')
     // Cache la fenêtre de chargement
     Loading.hide()
   },
