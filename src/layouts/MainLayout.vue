@@ -11,8 +11,8 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="center">
+          Capteurs de température
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -82,3 +82,9 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+
+.center{
+  text-align: center;
+}
+</style>
