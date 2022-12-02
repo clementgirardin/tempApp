@@ -87,10 +87,8 @@ const actions = {
         commit('setToken', null)
         // Vide le locaStorage
         LocalStorage.clear()
-        // Vide la liste des tâches
-        dispatch('taches/viderTaches', null, { root: true })
         // Redirige l'utilisateur vers la page de connexion
-        that.$router.push('/connexion')
+        that.$router.push('/connection')
         // location.reload() // recharge la page du navigateur
         Loading.hide()
       })

@@ -37,7 +37,7 @@ const actions = {
   },
 
   connecterUtilisateur ({ commit, dispatch }, payload) {
-    var axios = require('axios');
+    let axios = require('axios');
     var data = '{\r\n    "email": "test@tempapi.divtec.me",\r\n    "password": "Admlocal1"\r\n}';
 
     var config = {

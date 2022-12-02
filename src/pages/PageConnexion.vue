@@ -9,13 +9,13 @@
         align="justify"
         narrow-indicator
       >
-        <q-tab name="connexion" label="Se connecter"/>
+        <q-tab name="connection" label="Se connecter"/>
       </q-tabs>
 
       <q-separator/>
 
       <q-tab-panels v-model="tab" animated>
-        <q-tab-panel name="connexion">
+        <q-tab-panel name="connection">
           <div className="text-h6">Se connecter</div>
           <ConnexionForm/>
         </q-tab-panel>
@@ -32,7 +32,7 @@ export default {
   components: { ConnexionForm },
   data () {
     return {
-      tab: 'connexion'
+      tab: 'connection'
     }
   }
 }

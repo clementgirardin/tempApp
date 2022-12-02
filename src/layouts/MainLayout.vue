@@ -3,11 +3,11 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title class="absolute-center">
-          ToDo
+          Capteurs de température
         </q-toolbar-title>
         <q-btn
           v-if="!user"
-          to="/connexion"
+          to="/connection"
           flat
           icon-right="account_circle"
           label="Se connecter"
