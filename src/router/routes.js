@@ -5,7 +5,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'favoris', component: () => import('pages/CapteursFavoris.vue') }
+      { path: 'favoris', component: () => import('pages/CapteursFavoris.vue') },
+      { path: 'connection', component: () => import('pages/PageConnexion.vue') }
     ]
   },
 

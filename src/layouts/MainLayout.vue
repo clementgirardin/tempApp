@@ -56,9 +56,14 @@ const linksList = [
     route: '/'
   },
   {
-    title: 'Se connecter',
+    title: 'Favoris',
     icon: 'account_circle',
     route: '/favoris'
+  },
+  {
+    title: 'Se connecter',
+    icon: 'account_circle',
+    route: '/connection'
   }
 ]
 
