@@ -1,95 +1,87 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpr fFf">
     <q-header elevated>
       <q-toolbar>
+        <q-toolbar-title class="absolute-center">
+          ToDo
+        </q-toolbar-title>
         <q-btn
+          v-if="!user"
+          to="/connexion"
           flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
+          icon-right="account_circle"
+          label="Se connecter"
+          class="absolute-right"
         />
 
-        <q-toolbar-title class="center">
-          Capteurs de température
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn
+          v-else
+          @click="deconnecterUtilisateur"
+          flat
+          icon-right="account_circle"
+          label="Se déconnecter"
+          class="absolute-right"
+        />
       </q-toolbar>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Menu
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.id"
-          :link-object="link"
-        />
-      </q-list>
-    </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer elevated>
+      <q-tabs>
+        <q-route-tab
+          v-for="lien in liens"
+          :key="lien.id"
+          :to="lien.route"
+          :icon="lien.icone"
+          :label="lien.libelle"
+          exact
+        />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Aperçu',
-    icon: 'width_full',
-    route: '/'
-  },
-  {
-    title: 'Favoris',
-    icon: 'account_circle',
-    route: '/favoris'
-  },
-  {
-    title: 'Se connecter',
-    icon: 'account_circle',
-    route: '/connection'
-  }
-]
-
-export default defineComponent({
+import { mapState, mapActions } from 'vuex'
+export default {
   name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
+  data () {
     return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      leftDrawerOpen: false,
+      liens: [ // Tableau des liens de l'application
+        {
+          id: 1,
+          libelle: 'Aperçu',
+          icone: 'width_full',
+          route: '/'
+        },
+        {
+          id: 2,
+          libelle: 'Favoris',
+          icone: 'favorite',
+          route: '/favoris'
+        },
+        {
+          id: 3,
+          libelle: 'Se connecter',
+          icone: 'account_circle',
+          route: '/connection'
+        }
+      ]
     }
+  },
+  computed: {
+    ...mapState('auth', ['user'])
+  },
+  methods: {
+    ...mapActions('auth', ['deconnecterUtilisateur'])
   }
-})
+}
 </script>
+
 <style>
 
-.center{
-  text-align: center;
-}
 </style>
