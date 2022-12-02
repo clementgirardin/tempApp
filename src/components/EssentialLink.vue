@@ -3,16 +3,17 @@
     clickable
     tag="a"
     target="_blank"
+    @click="this.$router.push(linkObject.route)"
   >
     <q-item-section
-      v-if="icon"
+      v-if="linkObject.icon"
       avatar
     >
-      <q-icon :name="icon" />
+      <q-icon :name="linkObject.icon" />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
+      <q-item-label>{{ linkObject.title }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -23,19 +24,9 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'EssentialLink',
   props: {
-    title: {
-      type: String,
-      required: true
-    },
-
-    route: {
-      type: String,
-      default: '/'
-    },
-
-    icon: {
-      type: String,
-      default: ''
+    linkObject: {
+      required: true,
+      type: Object
     }
   }
 })

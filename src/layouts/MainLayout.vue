@@ -33,8 +33,8 @@
 
         <EssentialLink
           v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
+          :key="link.id"
+          :link-object="link"
         />
       </q-list>
     </q-drawer>
@@ -53,12 +53,12 @@ const linksList = [
   {
     title: 'Aperçu',
     icon: 'width_full',
-    link: 'https://quasar.dev'
+    route: '/'
   },
   {
     title: 'Se connecter',
     icon: 'account_circle',
-    limk: 'https://chat.quasar.dev'
+    route: '/favoris'
   }
 ]
 
