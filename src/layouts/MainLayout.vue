@@ -58,7 +58,7 @@ const linksList = [
   {
     title: 'Se connecter',
     icon: 'account_circle',
-    link: 'https://chat.quasar.dev'
+    limk: 'https://chat.quasar.dev'
   }
 ]
 
