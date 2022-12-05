@@ -74,7 +74,7 @@ const actions = {
       })
       .finally(function () {
         // Réinitialise user et token
-        commit('setUser', null)
+        commit('setUserMut', null)
         commit('setToken', null)
         // Vide le locaStorage
         LocalStorage.clear()
