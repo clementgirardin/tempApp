@@ -44,16 +44,15 @@ const actions = {
   },
   setUser (context, data) {
     const that = this
-    console.log('setUser_bonjour1')
     // Sauvegarde, commite, les données dans le magasin
     context.commit('setUserMut', data.user)
-    console.log('bonjour2')
     context.commit('setToken', data.access_token)
     // Sauvegarde les données de l'utilisateur dans le localStorage
     LocalStorage.set('user', state.user)
     LocalStorage.set('token', state.access_token)
     // Redirige l'utilisateur vers la page des tâches
     that.$router.push('/favoris')
+    // Cache l'onglet se connecter
     // Cache la fenêtre de chargement
     Loading.hide()
   },
