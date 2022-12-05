@@ -12,7 +12,7 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
-  setUser ({ commit, dispatch, state }, data) {
+  setUserMut ({ commit, dispatch, state }, data) {
     const that = this
     // Sauvegarde, commite, les données dans le magasin
     commit('setUser', data.user)
@@ -53,14 +53,16 @@ const actions = {
         throw error
       })
   },
-  setUser ({ commit, dispatch }, data) {
+  setUser (context, data) {
     const that = this
+    console.log('bonjour1')
     // Sauvegarde, commite, les données dans le magasin
-    commit('setUser', data.user)
-    commit('setToken', data.access_token)
+    context.commit('setUserMut', data.user)
+    console.log('bonjour2')
+    context.commit('setToken', data.access_token)
     // Sauvegarde les données de l'utilisateur dans le localStorage
     LocalStorage.set('user', state.user)
-    LocalStorage.set('token', state.token)
+    LocalStorage.set('token', state.access_token)
     // Redirige l'utilisateur vers la page des tâches
     that.$router.push('/favoris')
     // Cache la fenêtre de chargement
