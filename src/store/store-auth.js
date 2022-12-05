@@ -12,7 +12,7 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
-  setUser (state, user) {
+  setUserMut (state, user) {
     state.user = user
   },
   setToken (state, token) {
