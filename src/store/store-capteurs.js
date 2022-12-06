@@ -31,7 +31,7 @@ const actions = {
    * @param dispatch
    * @param payload
    */
-  afficherCapteurs ({ commit, dispatch }, payload) {
+  getCapteurs ({ commit, dispatch }, payload) {
     Loading.show()
     api.get('/capteurs', payload)
       .then(function (response) {
