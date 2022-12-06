@@ -1,6 +1,6 @@
 import { api } from 'boot/axios'
 import { afficherMessageErreur } from 'src/fonctions/message-erreur'
-import {Loading, LocalStorage} from 'quasar'
+import { Loading, LocalStorage } from 'quasar'
 // State : données du magasin
 const state = {
   token: null,
@@ -12,8 +12,8 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
-  SET_CAPTEUR (state, capteurs) {
-    state.capteurs = capteurs
+  SET_CAPTEUR (state, newCapteurs) {
+    state.capteurs = newCapteurs
   },
   setToken (state, token) {
     state.token = token
@@ -54,17 +54,11 @@ const actions = {
    * @param data
    */
   setCapteur (context, data) {
-    const that = this
     // Sauvegarde, commite, les données dans le magasin
     context.commit('SET_CAPTEUR', data.user)
     context.commit('setToken', data.access_token)
-    // Sauvegarde les données de l'utilisateur dans le localStorage
-    LocalStorage.set('user', state.user)
+    // Sauvegarde le token de l'utilisateur dans le localStorage
     LocalStorage.set('token', state.access_token)
-    // Redirige l'utilisateur vers la page des tâches
-    that.$router.push('/favoris')
-    // Cache l'onglet se connecter
-    // Cache la fenêtre de chargement
     Loading.hide()
   }
 }
@@ -75,7 +69,9 @@ Fonctionne comme les propriétés calculées
 Sert à calculer, trier, filtrer ou formater les donneés
  */
 const getters = {
-
+  capteurs (state) {
+    return state.capteurs
+  }
 }
 
 /*
