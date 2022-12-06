@@ -17,7 +17,7 @@
         {{ capteur.nom }}
       </q-card-title>
       <q-card-subtitle>
-        {{ capteur.id }}
+        {{ capteur.description }}
       </q-card-subtitle>
       <q-card-main>
         <q-progress

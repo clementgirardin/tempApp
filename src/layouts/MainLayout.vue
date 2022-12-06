@@ -63,12 +63,6 @@ export default {
           libelle: 'Favoris',
           icone: 'favorite',
           route: '/favoris'
-        },
-        {
-          id: 3,
-          libelle: 'Se connecter',
-          icone: 'account_circle',
-          route: '/connection'
         }
       ]
     }
