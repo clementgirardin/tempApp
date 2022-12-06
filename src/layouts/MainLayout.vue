@@ -56,7 +56,7 @@ export default {
           id: 1,
           libelle: 'Se connecter',
           icone: 'account_circle',
-          route: '/connection'
+          route: '/'
         },
         {
           id: 2,
@@ -68,7 +68,7 @@ export default {
           id: 3,
           libelle: 'Aperçu',
           icone: 'width_full',
-          route: '/'
+          route: '/apercu'
         }
       ]
     }
