@@ -1,6 +1,6 @@
 import { api } from 'boot/axios'
 import { afficherMessageErreur } from 'src/fonctions/message-erreur'
-import { Loading, LocalStorage } from 'quasar'
+import { Loading } from 'quasar'
 // State : données du magasin
 const state = {
   token: null,
@@ -25,40 +25,29 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
+
   /**
-   * affichage capteurs
-   * @param dispatch
-   * @param payload
+   * Récupère les capteurs
+   * @param commit
    */
-  getCapteurs ({ dispatch }, payload) {
+  getCapteurs ({ commit }) {
     Loading.show()
-    api.get('/capteurs', payload)
+    api.get('/capteurs')
+      // En cas de succès : remplacer le tableau des clients par la réponse de l'API
       .then(function (response) {
         console.log(response)
-        dispatch('SET_CAPTEUR', response.data)
-      })
-      .catch(function (error) {
+        commit('SET_CAPTEUR', response.data.results)
+        // TODOs state clientsCharges: true
         Loading.hide()
-        console.log(error)
+      })
+      // En cas d'échec : afficher un message dans la console
+      .catch(function (error) {
         afficherMessageErreur(
-          'Affichage des capteurs impossible !',
-          Object.values(error.response.data)
+          'Erreur lors de la récupération des capteurs !'
         )
+        Loading.hide()
         throw error
       })
-  },
-  /**
-   * Connection et redirection de l'utilisateur
-   * @param context
-   * @param data
-   */
-  setCapteur (context, data) {
-    // Sauvegarde, commite, les données dans le magasin
-    context.commit('SET_CAPTEUR', data.user)
-    context.commit('setToken', data.access_token)
-    // Sauvegarde le token de l'utilisateur dans le localStorage
-    LocalStorage.set('token', state.access_token)
-    Loading.hide()
   }
 }
 
