@@ -1,9 +1,9 @@
 import { api } from 'boot/axios'
 import { afficherMessageErreur } from 'src/fonctions/message-erreur'
 import { Loading } from 'quasar'
+import storeAuth from 'src/store/store-auth'
 // State : données du magasin
 const state = {
-  token: null,
   capteurs: []
 }
 
@@ -14,9 +14,6 @@ Les mutations ne peuvent pas être asynchrones !!!
 const mutations = {
   SET_CAPTEUR (state, newCapteurs) {
     state.capteurs = newCapteurs
-  },
-  setToken (state, token) {
-    state.token = token
   }
 }
 
@@ -32,12 +29,15 @@ const actions = {
    */
   getCapteurs ({ commit }) {
     Loading.show()
-    api.get('/capteurs')
+    // Configuration du header avec token
+    const config = {
+      headers: { Authorization: 'Bearer ' + storeAuth.state.token }
+    }
+    api.get('/capteurs', config)
       // En cas de succès : remplacer le tableau des clients par la réponse de l'API
       .then(function (response) {
         console.log(response)
-        commit('SET_CAPTEUR', response.data.results)
-        // TODOs state clientsCharges: true
+        commit('SET_CAPTEUR', response.data.result)
         Loading.hide()
       })
       // En cas d'échec : afficher un message dans la console

@@ -1,7 +1,6 @@
 <template>
   <q-page padding>
     <Capteur class="marge"
-             :key="capteurs.id"
              :capteur="capteurs"
   />
   </q-page>
