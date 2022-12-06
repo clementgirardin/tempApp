@@ -54,15 +54,21 @@ export default {
       liens: [ // Tableau des liens de l'application
         {
           id: 1,
-          libelle: 'Aperçu',
-          icone: 'width_full',
-          route: '/'
+          libelle: 'Se connecter',
+          icone: 'account_circle',
+          route: '/connection'
         },
         {
           id: 2,
           libelle: 'Favoris',
           icone: 'favorite',
           route: '/favoris'
+        },
+        {
+          id: 3,
+          libelle: 'Aperçu',
+          icone: 'width_full',
+          route: '/'
         }
       ]
     }
