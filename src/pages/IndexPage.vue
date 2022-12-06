@@ -1,13 +1,15 @@
 <template>
-  <q-page class="flex flex-center">
-
+  <q-page padding>
+    <Capteur/>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import Capteur from 'components/capteursTempérature.vue'
 
 export default defineComponent({
-  name: 'IndexPage'
+  name: 'IndexPage',
+  components: { Capteur }
 })
 </script>
