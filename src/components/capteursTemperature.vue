@@ -16,17 +16,9 @@
       <q-card-title>
         {{ capteur.nom }}
       </q-card-title>
-      <q-card-subtitle>
-        {{ capteur.description }}
-      </q-card-subtitle>
-      <q-card-main>
-        <q-progress
-          :value="capteur.valeur"
-          color="primary"
-          size="10px"
-          class="q-mt-md"
-        />
-      </q-card-main>
+<!--      <q-card-subtitle>-->
+<!--        {{ capteur.data[0].salle }}-->
+<!--      </q-card-subtitle>-->
     </q-card-section>
   </q-card>
 </template>
@@ -36,7 +28,7 @@
 // import capt from 'src/store/store-capteurs'
 
 export default {
-  name: 'capteursTempérature',
+  name: 'capteursTemperature',
   props: {
     capteur: {
       required: true,

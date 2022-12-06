@@ -36,7 +36,7 @@ const actions = {
     api.get('/capteurs', config)
       // En cas de succès : remplacer le tableau des clients par la réponse de l'API
       .then(function (response) {
-        console.log(response)
+        console.log(response.data[0])
         commit('SET_CAPTEUR', response.data)
         Loading.hide()
       })

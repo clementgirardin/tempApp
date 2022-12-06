@@ -1,19 +1,21 @@
 <template>
   <q-page padding>
-    <Capteur class="marge"
-             :capteur="capteurs"
+    <CapteursTemperature
+      v-for="capteur in capteurs"
+      :key="capteur.id"
+      :capteur="capteur"
   />
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Capteur from 'components/capteursTempérature.vue'
+import CapteursTemperature from 'components/capteursTemperature.vue'
 import { mapGetters, mapActions } from 'vuex/dist/vuex.mjs'
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { Capteur },
+  components: { CapteursTemperature },
   computed: {
     ...mapGetters('capteurs', ['capteurs'])
   },
