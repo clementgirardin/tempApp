@@ -25,6 +25,36 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
+
+  /**
+   * affichage capteurs
+   * @param commit
+   * @param dispatch
+   * @param payload
+   */
+  afficherCapteurs ({ commit, dispatch }, payload) {
+    Loading.show()
+    api.post('/capteurs', payload)
+      .then(function (response) {
+        console.log(response)
+        dispatch('setUser', response.data)
+      })
+      .catch(function (error) {
+        Loading.hide()
+        console.log(error)
+        afficherMessageErreur(
+          'Affichage des capteurs impossible !',
+          Object.values(error.response.data)
+        )
+        throw error
+      })
+  },
+  /**
+   * Connection d'un utilisateur
+   * @param commit
+   * @param dispatch
+   * @param payload
+   */
   connecterUtilisateur ({ commit, dispatch }, payload) {
     Loading.show()
     api.post('/login', payload)
@@ -42,6 +72,11 @@ const actions = {
         throw error
       })
   },
+  /**
+   * Connection et redirection de l'utilisateur
+   * @param context
+   * @param data
+   */
   setUser (context, data) {
     const that = this
     // Sauvegarde, commite, les données dans le magasin
@@ -56,6 +91,12 @@ const actions = {
     // Cache la fenêtre de chargement
     Loading.hide()
   },
+  /**
+   * Déconnexion de l'utilisateur
+   * @param commit
+   * @param state
+   * @param dispatch
+   */
   deconnecterUtilisateur ({ commit, state, dispatch }) {
     Loading.show()
     const that = this
