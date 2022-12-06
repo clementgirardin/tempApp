@@ -33,8 +33,20 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
+// import capt from 'src/store/store-capteurs'
+
 export default {
-  name: 'capteursTempérature'
+  name: 'capteursTempérature',
+  data () {
+    return {
+      capteur: {
+        nom: '',
+        description: '',
+        valeur: 0
+      }
+    }
+  }
 }
 </script>
 
