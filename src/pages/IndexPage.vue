@@ -7,7 +7,7 @@
 <script>
 import { defineComponent } from 'vue'
 import Capteur from 'components/capteursTempérature.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex/dist/vuex.mjs'
 
 export default defineComponent({
   name: 'IndexPage',
@@ -18,7 +18,7 @@ export default defineComponent({
   methods: {
     ...mapActions('capteurs', ['getCapteurs'])
   },
-  // appel de la fonction getClientsAPI
+  // appel de la fonction getCapteurs
   mounted () {
     this.getCapteurs()
   }
