@@ -1,9 +1,8 @@
 import { api } from 'boot/axios'
 import { afficherMessageErreur } from 'src/fonctions/message-erreur'
-import { Loading } from 'quasar'
+import {Loading, LocalStorage} from 'quasar'
 // State : données du magasin
 const state = {
-  user: null,
   token: null,
   capteurs: []
 }
@@ -16,6 +15,9 @@ const mutations = {
   SET_CAPTEUR (state, capteurs) {
     state.capteurs = capteurs
   },
+  setToken (state, token) {
+    state.token = token
+  }
 }
 
 /*
@@ -46,6 +48,25 @@ const actions = {
         throw error
       })
   },
+  /**
+   * Connection et redirection de l'utilisateur
+   * @param context
+   * @param data
+   */
+  setCapteur (context, data) {
+    const that = this
+    // Sauvegarde, commite, les données dans le magasin
+    context.commit('SET_CAPTEUR', data.user)
+    context.commit('setToken', data.access_token)
+    // Sauvegarde les données de l'utilisateur dans le localStorage
+    LocalStorage.set('user', state.user)
+    LocalStorage.set('token', state.access_token)
+    // Redirige l'utilisateur vers la page des tâches
+    that.$router.push('/favoris')
+    // Cache l'onglet se connecter
+    // Cache la fenêtre de chargement
+    Loading.hide()
+  }
 }
 
 /*
