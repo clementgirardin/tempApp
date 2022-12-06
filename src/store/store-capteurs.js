@@ -13,7 +13,9 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
-
+  SET_CAPTEUR (state, capteurs) {
+    state.capteurs = capteurs
+  },
 }
 
 /*
@@ -32,7 +34,7 @@ const actions = {
     api.get('/capteurs', payload)
       .then(function (response) {
         console.log(response)
-        dispatch('setCapteur', response.data)
+        dispatch('SET_CAPTEUR', response.data)
       })
       .catch(function (error) {
         Loading.hide()
