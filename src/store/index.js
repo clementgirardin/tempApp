@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import auth from './store-auth'
+import capteurs from './store-capteurs'
 
 // import example from './module-example'
 
@@ -15,7 +16,8 @@ import auth from './store-auth'
 export default (function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      auth
+      auth,
+      capteurs
     },
 
     // enable strict mode (adds overhead!)
