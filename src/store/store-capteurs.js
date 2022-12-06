@@ -37,7 +37,7 @@ const actions = {
       // En cas de succès : remplacer le tableau des clients par la réponse de l'API
       .then(function (response) {
         console.log(response)
-        commit('SET_CAPTEUR', response.data.result)
+        commit('SET_CAPTEUR', response.data)
         Loading.hide()
       })
       // En cas d'échec : afficher un message dans la console
