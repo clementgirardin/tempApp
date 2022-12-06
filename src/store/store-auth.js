@@ -63,7 +63,7 @@ const actions = {
     LocalStorage.set('user', state.user)
     LocalStorage.set('token', state.access_token)
     // Redirige l'utilisateur vers la page des tâches
-    that.$router.push('/favoris')
+    that.$router.push('/apercu')
     // Cache l'onglet se connecter
     // Cache la fenêtre de chargement
     Loading.hide()
