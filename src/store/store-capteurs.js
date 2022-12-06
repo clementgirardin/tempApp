@@ -27,11 +27,10 @@ Elles peuvent être asynchrones !
 const actions = {
   /**
    * affichage capteurs
-   * @param commit
    * @param dispatch
    * @param payload
    */
-  getCapteurs ({ commit, dispatch }, payload) {
+  getCapteurs ({ dispatch }, payload) {
     Loading.show()
     api.get('/capteurs', payload)
       .then(function (response) {
