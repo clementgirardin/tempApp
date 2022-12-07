@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md">
 
-    <q-card class="my-card">
+      <q-card class="my-card flex">
       <q-item-section class="donne">
         <q-item-label lines="1" class="title">
           {{ capteur.nom }}
@@ -44,26 +44,33 @@ export default {
 
 <style lang="sass" scoped>
 .my-card
-  width: 100%
-  max-width: 300px
   background-color: #1D1D1D
-  color: white
+  border-radius: 10px
+  border: 1px solid #d9560f
+  box-shadow: 0 0 10px #d9560f
+  align-items: center
+  justify-content: space-between
+  position: relative
+  margin: auto
 
   .donne
     padding: 10px
     font-size: 16px
     text-align: left
     margin: 20px
+    color: #d9560f
 
     .title
       text-align: center
       margin-bottom: 10px
       font-weight: bold
       font-size: 20px
+      color: #d9560f
 
     .marginBas
       margin-bottom: 20px
 
     .sousTitle
       font-weight: bold
+
 </style>
