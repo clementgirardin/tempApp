@@ -7,7 +7,7 @@
         </q-toolbar-title>
         <q-btn
           v-if="!user"
-          to="/connection"
+          to="/"
           flat
           icon-right="account_circle"
           label="Se connecter"
